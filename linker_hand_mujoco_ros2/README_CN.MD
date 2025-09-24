@@ -14,7 +14,7 @@ $ cd linker_hand_mujoco_ros2/src    #进入目录
 $ # 1. 克隆仓库（使用 sparse 模式 + blob 过滤，节省空间）
 $ git clone --filter=blob:none --sparse https://github.com/linker-bot/linkerhand-sim.git
 $ # 2. 进入仓库目录
-$ cd linker_hand_sim
+$ cd linkerhand-sim
 $ # 3. 设置 sparse-checkout 目录
 $ git sparse-checkout set linker_hand_mujoco_ros2
 $ cd linker_hand_mujoco_ros2/src/linker_hand_sim/

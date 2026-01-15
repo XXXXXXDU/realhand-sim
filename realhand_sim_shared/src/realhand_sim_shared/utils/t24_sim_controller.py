@@ -9,7 +9,7 @@ rostopic pub /cb_right_hand_control_cmd sensor_msgs/JointState "{header: {seq: 0
 class T24SimController:
     def __init__(self):
         rospack = rospkg.RosPack()
-        urdf_path_right = rospack.get_path('linker_hand_pybullet') + "/urdf/t24/linkerhand_t24_1_right.urdf"
+        urdf_path_right = rospack.get_path('real_hand_pybullet') + "/urdf/t24/realhand_t24_1_right.urdf"
         urdf_path=urdf_path_right
         self.right_hand_state_pub = rospy.Publisher("/cb_right_hand_state_sim",JointState,queue_size=0)
         self.right_hand_num_joints = 26

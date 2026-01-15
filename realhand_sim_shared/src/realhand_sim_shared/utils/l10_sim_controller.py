@@ -11,8 +11,8 @@ class L10SimController:
         # self.left_hand_state_pub = rospy.Publisher("/cb_left_hand_state_sim",JointState,queue_size=10)
         # self.right_hand_state_pub = rospy.Publisher("/cb_right_hand_state_sim",JointState,queue_size=10)
         # rospack = rospkg.RosPack()
-        # urdf_path_left = rospack.get_path('linker_hand_pybullet') + "/urdf/l10/left/linkerhand_l10_left.urdf"
-        # urdf_path_right = rospack.get_path('linker_hand_pybullet') + "/urdf/l10/right/linkerhand_l10_right.urdf"
+        # urdf_path_left = rospack.get_path('real_hand_pybullet') + "/urdf/l10/left/realhand_l10_left.urdf"
+        # urdf_path_right = rospack.get_path('real_hand_pybullet') + "/urdf/l10/right/realhand_l10_right.urdf"
         self.left_hand_current_position = []
         self.right_hand_current_position = []
         # 连接到仿真

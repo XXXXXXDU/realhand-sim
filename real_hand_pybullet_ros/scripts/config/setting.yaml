@@ -1,0 +1,8 @@
+VERSION: 1.3.1 # Version number; supports pressure sensors
+REAL_HAND:  # Hand configuration
+  LEFT_HAND:
+    EXISTS: True # Whether the left hand exists
+    JOINT: L10 # Left hand joint count
+  RIGHT_HAND:
+    EXISTS: True # Whether the right hand exists
+    JOINT: L10 # Right hand joint count

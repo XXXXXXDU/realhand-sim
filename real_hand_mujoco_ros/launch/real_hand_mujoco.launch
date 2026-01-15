@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<launch>
+    <!-- 参数定义 -->
+    <arg name="hand_type" default="left"/>
+    <arg name="hand_joint" default="L10"/>
+
+    <!-- real_hand 节点 -->
+    <node pkg="real_hand_mujoco_ros" type="real_hand.py" name="real_hand_mujoco_ros" output="screen">
+        <param name="hand_type" type="string" value="$(arg hand_type)"/>
+        <param name="hand_joint" type="string" value="$(arg hand_joint)"/>
+    </node>
+
+</launch>

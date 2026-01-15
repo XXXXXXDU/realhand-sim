@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
-     Commit Version: 1.6.0-1-g15f4949  Build Version: 1.6.7594.29634
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
      For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
 <robot
-  name="realhand_t24_1_right">
+  name="l20_8_l">
   <link
     name="base_link">
     <inertial>
       <origin
-        xyz="0.00258739599199595 0.00890116360143403 0.139419533771663"
+        xyz="-0.0102819628820777 0.00352641851193297 0.0845625151460371"
         rpy="0 0 0" />
       <mass
-        value="0.269152839443886" />
+        value="0.116519983042262" />
       <inertia
-        ixx="0.00177830804966392"
-        ixy="-5.93935627663372E-05"
-        ixz="2.69666193778981E-05"
-        iyy="0.00147653758319417"
-        iyz="0.000148619225191075"
-        izz="0.000428398038832443" />
+        ixx="0.00019944210307509"
+        ixy="-7.05605431038632E-07"
+        ixz="9.49122643259644E-06"
+        iyy="0.000117228286374775"
+        iyz="1.03483331654002E-06"
+        izz="0.000108619139525183" />
     </inertial>
     <visual>
       <origin
@@ -26,7 +26,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="meshes/base_link.STL" />
+          filename="package://real_hand_pybullet/urdf/meshes/real_hand_l20_8_left/base_link.STL" />
       </geometry>
       <material
         name="">
@@ -40,25 +40,25 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="meshes/base_link.STL" />
+          filename="package://real_hand_pybullet/urdf/meshes/real_hand_l20_8_left/base_link.STL" />
       </geometry>
     </collision>
   </link>
   <link
-    name="trumb_link0">
+    name="thumb_link0">
     <inertial>
       <origin
-        xyz="-0.00191014368243104 0.00275969733370915 0.000842631887315579"
+        xyz="0.012788845174661 -0.00250559878805773 0.00163109877141342"
         rpy="0 0 0" />
       <mass
-        value="0.00466562338059168" />
+        value="0.00274800455467183" />
       <inertia
-        ixx="2.18249754664417E-07"
-        ixy="5.39712506031415E-09"
-        ixz="-2.50095737897963E-08"
-        iyy="1.88077142287716E-07"
-        iyz="9.69090597953119E-09"
-        izz="1.37244707692484E-07" />
+        ixx="2.95792392813721E-07"
+        ixy="1.62810384545754E-08"
+        ixz="-1.23984593797188E-08"
+        iyy="9.81491501739537E-08"
+        iyz="1.15849987920073E-08"
+        izz="2.81863306848207E-07" />
     </inertial>
     <visual>
       <origin
@@ -66,7 +66,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="meshes/trumb_link0.STL" />
+          filename="package://real_hand_pybullet/urdf/meshes/real_hand_l20_8_left/thumb_link0.STL" />
       </geometry>
       <material
         name="">
@@ -80,43 +80,43 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="meshes/trumb_link0.STL" />
+          filename="package://real_hand_pybullet/urdf/meshes/real_hand_l20_8_left/thumb_link0.STL" />
       </geometry>
     </collision>
   </link>
   <joint
-    name="trumb_joint0"
+    name="thumb_joint0"
     type="revolute">
     <origin
-      xyz="-0.0064336 -0.0026725 0.068052"
-      rpy="0.0026857 0 0" />
+      xyz="-0.0025188 -0.0050821 0.052292"
+      rpy="0 0 0" />
     <parent
       link="base_link" />
     <child
-      link="trumb_link0" />
+      link="thumb_link0" />
     <axis
       xyz="1 0 0" />
     <limit
-      lower="-0.26"
-      upper="0.61"
+      lower="-1.57"
+      upper="0"
       effort="100"
       velocity="1" />
   </joint>
   <link
-    name="trumb_link1">
+    name="thumb_link1">
     <inertial>
       <origin
-        xyz="0.0107972965440593 -0.00780014885359367 -0.0106883405152574"
+        xyz="-0.00106504889667033 -0.012927050674077 0.00955894076219203"
         rpy="0 0 0" />
       <mass
-        value="0.0132849431009556" />
+        value="0.00188075940671965" />
       <inertia
-        ixx="5.73555307735334E-07"
-        ixy="1.52007301908348E-08"
-        ixz="-2.05107194782105E-07"
-        iyy="1.24055475959824E-06"
-        iyz="3.08915200839824E-08"
-        izz="1.12041715669972E-06" />
+        ixx="3.40676510335949E-07"
+        ixy="1.35509929341513E-08"
+        ixz="-5.69505648876837E-09"
+        iyy="1.02091139582549E-07"
+        iyz="7.17417344337338E-08"
+        izz="2.66867138572437E-07" />
     </inertial>
     <visual>
       <origin
@@ -124,7 +124,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="meshes/trumb_link1.STL" />
+          filename="package://real_hand_pybullet/urdf/meshes/real_hand_l20_8_left/thumb_link1.STL" />
       </geometry>
       <material
         name="">
@@ -138,101 +138,43 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="meshes/trumb_link1.STL" />
+          filename="package://real_hand_pybullet/urdf/meshes/real_hand_l20_8_left/thumb_link1.STL" />
       </geometry>
     </collision>
   </link>
   <joint
-    name="trumb_joint1"
+    name="thumb_joint1"
     type="revolute">
     <origin
-      xyz="0.006 0.00325 0.0036559"
-      rpy="0 0 1.3075" />
+      xyz="0.024508 -0.00083332 -0.00845"
+      rpy="0 0 0" />
     <parent
-      link="trumb_link0" />
+      link="thumb_link0" />
     <child
-      link="trumb_link1" />
+      link="thumb_link1" />
     <axis
       xyz="0 0 1" />
     <limit
-      lower="-1.43"
-      upper="0"
-      effort="100"
-      velocity="1" />
-  </joint>
-  <link
-    name="trumb_link2">
-    <inertial>
-      <origin
-        xyz="-0.0138667483899618 0.00254958129898298 0.0713379364969491"
-        rpy="0 0 0" />
-      <mass
-        value="0.269152839443886" />
-      <inertia
-        ixx="0.00146793673117189"
-        ixy="-2.43557236314711E-05"
-        ixz="0.000147718033673625"
-        iyy="0.00178773349062417"
-        iyz="1.17600361514915E-05"
-        izz="0.000427573449894473" />
-    </inertial>
-    <visual>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="meshes/trumb_link2.STL" />
-      </geometry>
-      <material
-        name="">
-        <color
-          rgba="1 1 1 1" />
-      </material>
-    </visual>
-    <collision>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="meshes/trumb_link2.STL" />
-      </geometry>
-    </collision>
-  </link>
-  <joint
-    name="trumb_joint2"
-    type="revolute">
-    <origin
-      xyz="0.022883 -0.00325 -0.0036559"
-      rpy="0 -0.00011487 0" />
-    <parent
-      link="trumb_link1" />
-    <child
-      link="trumb_link2" />
-    <axis
-      xyz="0 -1 0" />
-    <limit
       lower="0"
-      upper="0.89"
+      upper="1.57"
       effort="100"
       velocity="1" />
   </joint>
   <link
-    name="trumb_link3">
+    name="thumb_link2">
     <inertial>
       <origin
-        xyz="-0.0531779257749569 -0.0674226477836501 -0.00327423905078019"
+        xyz="-0.0106242248600186 -0.0208033821034288 0.016157542171647"
         rpy="0 0 0" />
       <mass
-        value="0.269152839443886" />
+        value="0.0205071145290538" />
       <inertia
-        ixx="0.0014706711144407"
-        ixy="-0.000137788652963271"
-        ixz="-2.38819654247802E-05"
-        iyy="0.000424785694139104"
-        iyz="-8.43109267516766E-06"
-        izz="0.00178778686311073" />
+        ixx="8.50741595986471E-06"
+        ixy="5.13839853450391E-08"
+        ixz="-9.48916013077135E-09"
+        iyy="3.61783039629938E-06"
+        iyz="2.69972846254833E-06"
+        izz="5.82101723613586E-06" />
     </inertial>
     <visual>
       <origin
@@ -240,7 +182,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="meshes/trumb_link3.STL" />
+          filename="package://real_hand_pybullet/urdf/meshes/real_hand_l20_8_left/thumb_link2.STL" />
       </geometry>
       <material
         name="">
@@ -254,136 +196,194 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="meshes/trumb_link3.STL" />
+          filename="package://real_hand_pybullet/urdf/meshes/real_hand_l20_8_left/thumb_link2.STL" />
       </geometry>
     </collision>
   </link>
   <joint
-    name="trumb_joint3"
+    name="thumb_joint2"
     type="revolute">
     <origin
-      xyz="0.039954 0.006 0.0044366"
-      rpy="-1.5682 -0.0095791 0" />
-    <parent
-      link="trumb_link2" />
-    <child
-      link="trumb_link3" />
-    <axis
-      xyz="0 0.0026132 1" />
-    <limit
-      lower="-1.57"
-      upper="0"
-      effort="100"
-      velocity="1" />
-  </joint>
-  <link
-    name="trumb_link4">
-    <inertial>
-      <origin
-        xyz="-0.0959366778925846 -0.00345041867474483 0.0721354631429822"
-        rpy="0 0 0" />
-      <mass
-        value="0.269152839443886" />
-      <inertia
-        ixx="0.00147586931101162"
-        ixy="-2.39914328826128E-05"
-        ixz="0.00011621070027556"
-        iyy="0.00178773349062445"
-        iyz="1.24864274973324E-05"
-        izz="0.000419640870054461" />
-    </inertial>
-    <visual>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="meshes/trumb_link4.STL" />
-      </geometry>
-      <material
-        name="">
-        <color
-          rgba="1 1 1 1" />
-      </material>
-    </visual>
-    <collision>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="meshes/trumb_link4.STL" />
-      </geometry>
-    </collision>
-  </link>
-  <joint
-    name="trumb_joint4"
-    type="revolute">
-    <origin
-      xyz="0.044215 0.002743 0"
-      rpy="1.5682 -5.3483E-05 -0.020468" />
-    <parent
-      link="trumb_link3" />
-    <child
-      link="trumb_link4" />
-    <axis
-      xyz="0 1 0" />
-    <limit
-      lower="-1.57"
-      upper="0"
-      effort="100"
-      velocity="1" />
-  </joint>
-  <link
-    name="trumb_link5">
-    <inertial>
-      <origin
-        xyz="-0.000345767318641471 2.09452099747542E-07 -7.36364440549614E-05"
-        rpy="0 0 0" />
-      <mass
-        value="1.25E-07" />
-      <inertia
-        ixx="5.20833333333333E-15"
-        ixy="-9.17050802319426E-30"
-        ixz="2.03216424011964E-29"
-        iyy="5.20833333333329E-15"
-        iyz="-2.42821247388343E-30"
-        izz="5.20833333333336E-15" />
-    </inertial>
-    <visual>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="meshes/trumb_link5.STL" />
-      </geometry>
-      <material
-        name="">
-        <color
-          rgba="1 1 1 1" />
-      </material>
-    </visual>
-    <collision>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="meshes/trumb_link5.STL" />
-      </geometry>
-    </collision>
-  </link>
-  <joint
-    name="trumb_joint5"
-    type="fixed">
-    <origin
-      xyz="0.044396 -0.0059997 -0.010129"
+      xyz="0.010985 -0.030795 0.012414"
       rpy="0 0 0" />
     <parent
-      link="trumb_link4" />
+      link="thumb_link1" />
     <child
-      link="trumb_link5" />
+      link="thumb_link2" />
+    <axis
+      xyz="1 0 0" />
+    <limit
+      lower="-1"
+      upper="0"
+      effort="100"
+      velocity="1" />
+  </joint>
+  <link
+    name="thumb_link3">
+    <inertial>
+      <origin
+        xyz="-0.0093736734679329 -0.0118164751838698 0.00400538635570426"
+        rpy="0 0 0" />
+      <mass
+        value="0.00483280693949485" />
+      <inertia
+        ixx="6.14077937948021E-07"
+        ixy="4.41097239264613E-09"
+        ixz="-3.5736559143174E-09"
+        iyy="3.38252728462671E-07"
+        iyz="1.33218100240235E-07"
+        izz="3.26769226661329E-07" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://real_hand_pybullet/urdf/meshes/real_hand_l20_8_left/thumb_link3.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://real_hand_pybullet/urdf/meshes/real_hand_l20_8_left/thumb_link3.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="thumb_joint3"
+    type="revolute">
+    <origin
+      xyz="-0.0010999 -0.044701 0.034112"
+      rpy="0 0 0" />
+    <parent
+      link="thumb_link2" />
+    <child
+      link="thumb_link3" />
+    <axis
+      xyz="1 0 0" />
+    <limit
+      lower="-1.57"
+      upper="0"
+      effort="100"
+      velocity="1" />
+  </joint>
+  <link
+    name="thumb_link4">
+    <inertial>
+      <origin
+        xyz="0.0030560377626466 -0.0105400390647686 0.00593674130309291"
+        rpy="0 0 0" />
+      <mass
+        value="0.00657025745665106" />
+      <inertia
+        ixx="5.93984229624015E-07"
+        ixy="8.88862926035374E-10"
+        ixz="-6.67254732405914E-10"
+        iyy="1.85296598190338E-07"
+        iyz="8.54877543904726E-08"
+        izz="5.0682843415754E-07" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://real_hand_pybullet/urdf/meshes/real_hand_l20_8_left/thumb_link4.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://real_hand_pybullet/urdf/meshes/real_hand_l20_8_left/thumb_link4.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="thumb_joint4"
+    type="revolute">
+    <origin
+      xyz="-0.01277 -0.030981 0.015322"
+      rpy="0 0 0" />
+    <parent
+      link="thumb_link3" />
+    <child
+      link="thumb_link4" />
+    <axis
+      xyz="1 0 0" />
+    <limit
+      lower="-1.57"
+      upper="0"
+      effort="100"
+      velocity="1" />
+  </joint>
+  <link
+    name="thumb_link5">
+    <inertial>
+      <origin
+        xyz="-0.000999999999998228 -1.88237025966487E-09 -7.70605801392321E-13"
+        rpy="0 0 0" />
+      <mass
+        value="1.5707963267949E-06" />
+      <inertia
+        ixx="1.96349540850869E-13"
+        ixy="-8.00805494173519E-19"
+        ixz="-3.2783414214898E-22"
+        iyy="6.21773546021472E-13"
+        iyz="-6.17105257037281E-28"
+        izz="6.21773546022979E-13" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://real_hand_pybullet/urdf/meshes/real_hand_l20_8_left/thumb_link5.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://real_hand_pybullet/urdf/meshes/real_hand_l20_8_left/thumb_link5.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="thumb_joint5"
+    type="fixed">
+    <origin
+      xyz="0.0040254 -0.030887 0.0073227"
+      rpy="0 0 0" />
+    <parent
+      link="thumb_link4" />
+    <child
+      link="thumb_link5" />
     <axis
       xyz="0 0 0" />
   </joint>
@@ -391,17 +391,17 @@
     name="index_link0">
     <inertial>
       <origin
-        xyz="-0.0116738400150615 -0.0249846423618668 0.00541127703895714"
+        xyz="0.00582427470614546 5.50368080415309E-07 0.00224749650949407"
         rpy="0 0 0" />
       <mass
-        value="0.269152839443886" />
+        value="0.000858838601128305" />
       <inertia
-        ixx="0.0017783079720147"
-        ixy="-5.93211342635092E-05"
-        ixz="2.71279767148864E-05"
-        iyy="0.00147732829997939"
-        iyz="0.000145802064392195"
-        izz="0.000427607399696438" />
+        ixx="3.48992698299602E-08"
+        ixy="-1.40954856587417E-13"
+        ixz="-4.85001741303822E-09"
+        iyy="2.50587256484778E-08"
+        iyz="-6.27354470289264E-14"
+        izz="4.06384245060269E-08" />
     </inertial>
     <visual>
       <origin
@@ -409,7 +409,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="meshes/index_link0.STL" />
+          filename="package://real_hand_pybullet/urdf/meshes/real_hand_l20_8_left/index_link0.STL" />
       </geometry>
       <material
         name="">
@@ -423,7 +423,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="meshes/index_link0.STL" />
+          filename="package://real_hand_pybullet/urdf/meshes/real_hand_l20_8_left/index_link0.STL" />
       </geometry>
     </collision>
   </link>
@@ -431,8 +431,8 @@
     name="index_joint0"
     type="revolute">
     <origin
-      xyz="0.014261 0.0339 0.13408"
-      rpy="0.0026857 0 0" />
+      xyz="-0.025865 -0.026698 0.15421"
+      rpy="0 0 0" />
     <parent
       link="base_link" />
     <child
@@ -440,8 +440,8 @@
     <axis
       xyz="1 0 0" />
     <limit
-      lower="-0.18"
-      upper="0"
+      lower="-0.26"
+      upper="0.26"
       effort="100"
       velocity="1" />
   </joint>
@@ -449,17 +449,17 @@
     name="index_link1">
     <inertial>
       <origin
-        xyz="-0.00540393374272892 -0.0274846423619768 -0.0117160692076493"
+        xyz="-0.000683355914575133 0.00480779595160377 0.0243017678581129"
         rpy="0 0 0" />
       <mass
-        value="0.269152839443886" />
+        value="0.00458483524788528" />
       <inertia
-        ixx="0.00177766272537291"
-        ixy="-6.07179790083106E-05"
-        ixz="4.00879755757671E-05"
-        iyy="0.00147732829997939"
-        iyz="0.000145225913584595"
-        izz="0.000428252646338224" />
+        ixx="7.10362351117315E-07"
+        ixy="9.32232025827648E-12"
+        ixz="9.3530763161132E-09"
+        iyy="7.2026634008211E-07"
+        iyz="1.54252194254467E-10"
+        izz="1.38653484523034E-07" />
     </inertial>
     <visual>
       <origin
@@ -467,7 +467,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="meshes/index_link1.STL" />
+          filename="package://real_hand_pybullet/urdf/meshes/real_hand_l20_8_left/index_link1.STL" />
       </geometry>
       <material
         name="">
@@ -481,7 +481,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="meshes/index_link1.STL" />
+          filename="package://real_hand_pybullet/urdf/meshes/real_hand_l20_8_left/index_link1.STL" />
       </geometry>
     </collision>
   </link>
@@ -489,8 +489,8 @@
     name="index_joint1"
     type="revolute">
     <origin
-      xyz="-0.0061577 0.0025 0.017075"
-      rpy="0 0.0095993 0" />
+      xyz="0.011115 -0.0047959 0"
+      rpy="0 0 0" />
     <parent
       link="index_link0" />
     <child
@@ -507,17 +507,17 @@
     name="index_link2">
     <inertial>
       <origin
-        xyz="-0.00484277615558324 -0.0309846423660203 -0.0537126175656924"
+        xyz="0.00281619330244812 0.00381383184692347 0.0165996182183856"
         rpy="0 0 0" />
       <mass
-        value="0.269152839443886" />
+        value="0.00240942424543446" />
       <inertia
-        ixx="0.00177766272537291"
-        ixy="-6.07179790083098E-05"
-        ixz="4.00879755757657E-05"
-        iyy="0.0014773282999794"
-        iyz="0.000145225913584584"
-        izz="0.000428252646338221" />
+        ixx="2.38084076321758E-07"
+        ixy="-7.16794249475409E-12"
+        ixz="-1.15502254761236E-08"
+        iyy="1.83480042446789E-07"
+        iyz="5.62453391231342E-12"
+        izz="9.81871447808043E-08" />
     </inertial>
     <visual>
       <origin
@@ -525,7 +525,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="meshes/index_link2.STL" />
+          filename="package://real_hand_pybullet/urdf/meshes/real_hand_l20_8_left/index_link2.STL" />
       </geometry>
       <material
         name="">
@@ -539,7 +539,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="meshes/index_link2.STL" />
+          filename="package://real_hand_pybullet/urdf/meshes/real_hand_l20_8_left/index_link2.STL" />
       </geometry>
     </collision>
   </link>
@@ -547,7 +547,7 @@
     name="index_joint2"
     type="revolute">
     <origin
-      xyz="-0.00056116 0.0035 0.041997"
+      xyz="-0.0034454 0.0010465 0.044883"
       rpy="0 0 0" />
     <parent
       link="index_link1" />
@@ -565,17 +565,17 @@
     name="index_link3">
     <inertial>
       <origin
-        xyz="0.000731836437005504 -0.0309846423707089 -0.0979473866863188"
+        xyz="-0.00677506648331382 0.00520857447698495 0.00971673970841427"
         rpy="0 0 0" />
       <mass
-        value="0.269152839443886" />
+        value="0.00356223440756339" />
       <inertia
-        ixx="0.00177421861342153"
-        ixy="-6.48905123172789E-05"
-        ixz="7.90107793802022E-05"
-        iyy="0.00147732829997989"
-        iyz="0.000143410112484766"
-        izz="0.000431696758289107" />
+        ixx="2.41702010826938E-07"
+        ixy="-5.73074148827138E-12"
+        ixz="3.31881653745547E-08"
+        iyy="2.43605815950697E-07"
+        iyz="3.73346320200855E-12"
+        izz="1.21622579392247E-07" />
     </inertial>
     <visual>
       <origin
@@ -583,7 +583,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="meshes/index_link3.STL" />
+          filename="package://real_hand_pybullet/urdf/meshes/real_hand_l20_8_left/index_link3.STL" />
       </geometry>
       <material
         name="">
@@ -597,7 +597,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="meshes/index_link3.STL" />
+          filename="package://real_hand_pybullet/urdf/meshes/real_hand_l20_8_left/index_link3.STL" />
       </geometry>
     </collision>
   </link>
@@ -605,8 +605,8 @@
     name="index_joint3"
     type="revolute">
     <origin
-      xyz="-0.002743 0 0.044215"
-      rpy="0 0.02891 0" />
+      xyz="0.0084126 -0.0012 0.03069"
+      rpy="0 0 0" />
     <parent
       link="index_link2" />
     <child
@@ -623,17 +623,17 @@
     name="index_link4">
     <inertial>
       <origin
-        xyz="-0.000349434973883823 -4.11141635459078E-07 5.35951185556272E-05"
+        xyz="1.88221978281167E-09 -0.000999999999998197 -1.53765888910584E-14"
         rpy="0 0 0" />
       <mass
-        value="1.24999999999997E-07" />
+        value="1.57079632679489E-06" />
       <inertia
-        ixx="5.20833333333303E-15"
-        ixy="1.36384265347506E-29"
-        ixz="-3.14558285956878E-29"
-        iyy="5.20833333333322E-15"
-        iyz="-3.40964343130674E-29"
-        izz="5.20833333333309E-15" />
+        ixx="6.21773546021469E-13"
+        ixy="8.00741478540678E-19"
+        ixz="1.22808373760624E-29"
+        iyy="1.96349540850869E-13"
+        iyz="-6.52465148254322E-24"
+        izz="6.21773546022976E-13" />
     </inertial>
     <visual>
       <origin
@@ -641,7 +641,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="meshes/index_link4.STL" />
+          filename="package://real_hand_pybullet/urdf/meshes/real_hand_l20_8_left/index_link4.STL" />
       </geometry>
       <material
         name="">
@@ -655,7 +655,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="meshes/index_link4.STL" />
+          filename="package://real_hand_pybullet/urdf/meshes/real_hand_l20_8_left/index_link4.STL" />
       </geometry>
     </collision>
   </link>
@@ -663,7 +663,7 @@
     name="index_joint4"
     type="fixed">
     <origin
-      xyz="-0.012677 -0.0059997 0.043737"
+      xyz="-0.013709 0.0063957 0.024981"
       rpy="0 0 0" />
     <parent
       link="index_link3" />
@@ -676,17 +676,17 @@
     name="middle_link0">
     <inertial>
       <origin
-        xyz="-0.0109304819869269 -0.00221632614720707 -0.00220331857411777"
+        xyz="0.00582427468937505 5.60656395559578E-07 0.00224749643439595"
         rpy="0 0 0" />
       <mass
-        value="0.269152839443886" />
+        value="0.000858838603161935" />
       <inertia
-        ixx="0.0017783079720147"
-        ixy="-5.93211342635094E-05"
-        ixz="2.71279767148867E-05"
-        iyy="0.00147732829997939"
-        iyz="0.000145802064392195"
-        izz="0.000427607399696438" />
+        ixx="3.4899270025391E-08"
+        ixy="-1.21073498698247E-13"
+        ixz="-4.85001786500724E-09"
+        iyy="2.50587259127697E-08"
+        iyz="-7.65837062795531E-14"
+        izz="4.06384246311439E-08" />
     </inertial>
     <visual>
       <origin
@@ -694,7 +694,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="meshes/middle_link0.STL" />
+          filename="package://real_hand_pybullet/urdf/meshes/real_hand_l20_8_left/middle_link0.STL" />
       </geometry>
       <material
         name="">
@@ -708,7 +708,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="meshes/middle_link0.STL" />
+          filename="package://real_hand_pybullet/urdf/meshes/real_hand_l20_8_left/middle_link0.STL" />
       </geometry>
     </collision>
   </link>
@@ -716,8 +716,8 @@
     name="middle_joint0"
     type="revolute">
     <origin
-      xyz="0.013518 0.011112 0.14163"
-      rpy="0.0026857 0 0" />
+      xyz="-0.030599 -0.0050984 0.1587"
+      rpy="0 0 0" />
     <parent
       link="base_link" />
     <child
@@ -725,8 +725,8 @@
     <axis
       xyz="1 0 0" />
     <limit
-      lower="0"
-      upper="0"
+      lower="-0.26"
+      upper="0.26"
       effort="100"
       velocity="1" />
   </joint>
@@ -734,17 +734,17 @@
     name="middle_link1">
     <inertial>
       <origin
-        xyz="-0.00533194001687153 -0.00488464236319619 -0.0192157236623227"
+        xyz="-0.000683357717291517 0.00480779481168012 0.024301773306106"
         rpy="0 0 0" />
       <mass
-        value="0.269152839443886" />
+        value="0.00458483752917026" />
       <inertia
-        ixx="0.00177766272537291"
-        ixy="-6.07179790074989E-05"
-        ixz="4.00879755769901E-05"
-        iyy="0.00147732829998527"
-        iyz="0.00014522591356337"
-        izz="0.000428252646332347" />
+        ixx="7.10362846233519E-07"
+        ixy="9.34572253105422E-12"
+        ixz="9.35317403724479E-09"
+        iyy="7.20266830372008E-07"
+        iyz="1.54168199233612E-10"
+        izz="1.38653515053436E-07" />
     </inertial>
     <visual>
       <origin
@@ -752,7 +752,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="meshes/middle_link1.STL" />
+          filename="package://real_hand_pybullet/urdf/meshes/real_hand_l20_8_left/middle_link1.STL" />
       </geometry>
       <material
         name="">
@@ -766,7 +766,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="meshes/middle_link1.STL" />
+          filename="package://real_hand_pybullet/urdf/meshes/real_hand_l20_8_left/middle_link1.STL" />
       </geometry>
     </collision>
   </link>
@@ -774,8 +774,8 @@
     name="middle_joint1"
     type="revolute">
     <origin
-      xyz="-0.0054143 0.0026683 0.01696"
-      rpy="0 0.0095993 0" />
+      xyz="0.011115 -0.0047959 0"
+      rpy="0 0 0" />
     <parent
       link="middle_link0" />
     <child
@@ -792,17 +792,17 @@
     name="middle_link2">
     <inertial>
       <origin
-        xyz="-0.00477201854191357 -0.00838464237202477 -0.0612121756676154"
+        xyz="0.00281619330244477 0.00381383184691594 0.0165996182183642"
         rpy="0 0 0" />
       <mass
-        value="0.269152839443886" />
+        value="0.00240942424543835" />
       <inertia
-        ixx="0.00177766434388306"
-        ixy="-6.07150463278508E-05"
-        ixz="4.00607257482394E-05"
-        iyy="0.00147732829998059"
-        iyz="0.000145227139685569"
-        izz="0.000428251027826884" />
+        ixx="2.38084075700044E-07"
+        ixy="-7.16794259047487E-12"
+        ixz="-1.15502251455208E-08"
+        iyy="1.83480041888284E-07"
+        iyz="5.6245336012395E-12"
+        izz="9.8187144844173E-08" />
     </inertial>
     <visual>
       <origin
@@ -810,7 +810,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="meshes/middle_link2.STL" />
+          filename="package://real_hand_pybullet/urdf/meshes/real_hand_l20_8_left/middle_link2.STL" />
       </geometry>
       <material
         name="">
@@ -824,7 +824,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="meshes/middle_link2.STL" />
+          filename="package://real_hand_pybullet/urdf/meshes/real_hand_l20_8_left/middle_link2.STL" />
       </geometry>
     </collision>
   </link>
@@ -832,8 +832,8 @@
     name="middle_joint2"
     type="revolute">
     <origin
-      xyz="-0.00056116 0.0035 0.041997"
-      rpy="0 -2.0194E-05 0" />
+      xyz="-0.0034454 0.0010465 0.044883"
+      rpy="0 0 0" />
     <parent
       link="middle_link1" />
     <child
@@ -850,17 +850,17 @@
     name="middle_link3">
     <inertial>
       <origin
-        xyz="-0.00202898234042185 -0.00838464237677725 -0.105427170323188"
+        xyz="-0.00677506745733072 0.00520857432498567 0.00971674194247016"
         rpy="0 0 0" />
       <mass
-        value="0.269152839443886" />
+        value="0.00356223461933983" />
       <inertia
-        ixx="0.00177766434388304"
-        ixy="-6.07150463278799E-05"
-        ixz="4.00607257485019E-05"
-        iyy="0.00147732829998058"
-        iyz="0.000145227139685572"
-        izz="0.000428251027826904" />
+        ixx="2.41702030721187E-07"
+        ixy="-5.73161074269106E-12"
+        ixz="3.31881874512611E-08"
+        iyy="2.43605860579951E-07"
+        iyz="3.72267732360627E-12"
+        izz="1.21622592125025E-07" />
     </inertial>
     <visual>
       <origin
@@ -868,7 +868,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="meshes/middle_link3.STL" />
+          filename="package://real_hand_pybullet/urdf/meshes/real_hand_l20_8_left/middle_link3.STL" />
       </geometry>
       <material
         name="">
@@ -882,7 +882,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="meshes/middle_link3.STL" />
+          filename="package://real_hand_pybullet/urdf/meshes/real_hand_l20_8_left/middle_link3.STL" />
       </geometry>
     </collision>
   </link>
@@ -890,7 +890,7 @@
     name="middle_joint3"
     type="revolute">
     <origin
-      xyz="-0.002743 0 0.044215"
+      xyz="0.0084126 -0.0012 0.03069"
       rpy="0 0 0" />
     <parent
       link="middle_link2" />
@@ -908,17 +908,17 @@
     name="middle_link4">
     <inertial>
       <origin
-        xyz="-0.000349704869523938 -7.4578572797912E-07 5.33973445394076E-05"
+        xyz="1.88221978281167E-09 -0.000999999999998197 -1.53765888910584E-14"
         rpy="0 0 0" />
       <mass
-        value="1.25E-07" />
+        value="1.57079632679489E-06" />
       <inertia
-        ixx="5.20833333333332E-15"
-        ixy="3.87023168072014E-29"
-        ixz="5.53743377610218E-30"
-        iyy="5.20833333333342E-15"
-        iyz="1.21268865032447E-29"
-        izz="5.20833333333335E-15" />
+        ixx="6.21773546021469E-13"
+        ixy="8.00741478610988E-19"
+        ixz="1.2282340926068E-29"
+        iyy="1.96349540850869E-13"
+        iyz="-6.52548378122148E-24"
+        izz="6.21773546022976E-13" />
     </inertial>
     <visual>
       <origin
@@ -926,7 +926,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="meshes/middle_link4.STL" />
+          filename="package://real_hand_pybullet/urdf/meshes/real_hand_l20_8_left/middle_link4.STL" />
       </geometry>
       <material
         name="">
@@ -940,7 +940,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="meshes/middle_link4.STL" />
+          filename="package://real_hand_pybullet/urdf/meshes/real_hand_l20_8_left/middle_link4.STL" />
       </geometry>
     </collision>
   </link>
@@ -948,7 +948,7 @@
     name="middle_joint4"
     type="fixed">
     <origin
-      xyz="-0.0126773959122548 -0.00599972219724709 0.0437367152831721"
+      xyz="-0.013709 0.0063957 0.024981"
       rpy="0 0 0" />
     <parent
       link="middle_link3" />
@@ -961,17 +961,17 @@
     name="ring_link0">
     <inertial>
       <origin
-        xyz="-0.0112077785389183 0.0202152553078928 0.0071599509520778"
+        xyz="0.00582427468937507 5.60656395504067E-07 0.00224749643439601"
         rpy="0 0 0" />
       <mass
-        value="0.269152839443886" />
+        value="0.000858838603161936" />
       <inertia
-        ixx="0.00177830707271652"
-        ixy="-5.93234165997825E-05"
-        ixz="2.71290797017276E-05"
-        iyy="0.00147732918866887"
-        iyz="0.00014580189695368"
-        izz="0.000427607410305141" />
+        ixx="3.48992700253911E-08"
+        ixy="-1.21073498738629E-13"
+        ixz="-4.85001786500725E-09"
+        iyy="2.50587259127699E-08"
+        iyz="-7.65837063803544E-14"
+        izz="4.0638424631144E-08" />
     </inertial>
     <visual>
       <origin
@@ -979,7 +979,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="meshes/ring_link0.STL" />
+          filename="package://real_hand_pybullet/urdf/meshes/real_hand_l20_8_left/ring_link0.STL" />
       </geometry>
       <material
         name="">
@@ -993,7 +993,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="meshes/ring_link0.STL" />
+          filename="package://real_hand_pybullet/urdf/meshes/real_hand_l20_8_left/ring_link0.STL" />
       </geometry>
     </collision>
   </link>
@@ -1001,8 +1001,8 @@
     name="ring_joint0"
     type="revolute">
     <origin
-      xyz="0.013795 -0.011295 0.13221"
-      rpy="0.0026856 0 0" />
+      xyz="-0.028294 0.016502 0.15421"
+      rpy="0 0 0" />
     <parent
       link="base_link" />
     <child
@@ -1010,8 +1010,8 @@
     <axis
       xyz="1 0 0" />
     <limit
-      lower="0"
-      upper="0.18"
+      lower="-0.26"
+      upper="0.26"
       effort="100"
       velocity="1" />
   </joint>
@@ -1019,17 +1019,17 @@
     name="ring_link1">
     <inertial>
       <origin
-        xyz="-0.00501043638848299 0.0177152553079935 -0.0100619791966741"
+        xyz="-0.000683358318393827 0.0048077950536014 0.0243017723141481"
         rpy="0 0 0" />
       <mass
-        value="0.269152839443886" />
+        value="0.00458483722148334" />
       <inertia
-        ixx="0.00177566145718129"
-        ixy="-6.34577267157826E-05"
-        ixz="6.55928326435769E-05"
-        iyy="0.00147732918866887"
-        iyz="0.000144050608580546"
-        izz="0.000430253025840368" />
+        ixx="7.10362743671974E-07"
+        ixy="9.34947184823574E-12"
+        ixz="9.35323619268588E-09"
+        iyy="7.20266705889107E-07"
+        iyz="1.54175118399794E-10"
+        izz="1.38653492039942E-07" />
     </inertial>
     <visual>
       <origin
@@ -1037,7 +1037,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="meshes/ring_link1.STL" />
+          filename="package://real_hand_pybullet/urdf/meshes/real_hand_l20_8_left/ring_link1.STL" />
       </geometry>
       <material
         name="">
@@ -1051,7 +1051,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="meshes/ring_link1.STL" />
+          filename="package://real_hand_pybullet/urdf/meshes/real_hand_l20_8_left/ring_link1.STL" />
       </geometry>
     </collision>
   </link>
@@ -1059,8 +1059,8 @@
     name="ring_joint1"
     type="revolute">
     <origin
-      xyz="-0.0059124 0.0025 0.017075"
-      rpy="0 0.028525 0" />
+      xyz="0.011115 -0.0047959 0"
+      rpy="0 0 0" />
     <parent
       link="ring_link0" />
     <child
@@ -1077,17 +1077,17 @@
     name="ring_link2">
     <inertial>
       <origin
-        xyz="-0.00445033006575546 0.0142152552987778 -0.0520584376961807"
+        xyz="0.00281619330245143 0.00381383184692152 0.0165996182184017"
         rpy="0 0 0" />
       <mass
-        value="0.269152839443886" />
+        value="0.00240942424543208" />
       <inertia
-        ixx="0.00177566410577584"
-        ixy="-6.34548177690244E-05"
-        ixz="6.55656636040719E-05"
-        iyy="0.00147732918867022"
-        iyz="0.000144051890007602"
-        izz="0.00043025037724447" />
+        ixx="2.38084074803434E-07"
+        ixy="-7.16794254610578E-12"
+        ixz="-1.15502250134732E-08"
+        iyy="1.83480040851795E-07"
+        iyz="5.62453383813714E-12"
+        izz="9.81871447040778E-08" />
     </inertial>
     <visual>
       <origin
@@ -1095,7 +1095,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="meshes/ring_link2.STL" />
+          filename="package://real_hand_pybullet/urdf/meshes/real_hand_l20_8_left/ring_link2.STL" />
       </geometry>
       <material
         name="">
@@ -1109,7 +1109,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="meshes/ring_link2.STL" />
+          filename="package://real_hand_pybullet/urdf/meshes/real_hand_l20_8_left/ring_link2.STL" />
       </geometry>
     </collision>
   </link>
@@ -1117,8 +1117,8 @@
     name="ring_joint2"
     type="revolute">
     <origin
-      xyz="-0.00056116 0.0035 0.041997"
-      rpy="0 -2.0194E-05 0" />
+      xyz="-0.0034454 0.0010465 0.044883"
+      rpy="0 0 0" />
     <parent
       link="ring_link1" />
     <child
@@ -1135,17 +1135,17 @@
     name="ring_link3">
     <inertial>
       <origin
-        xyz="-0.000744056113606869 0.0142152552972555 -0.0962856947299341"
+        xyz="-0.00677505902660809 0.00520857164246757 0.00971671903636773"
         rpy="0 0 0" />
       <mass
-        value="0.269152839443886" />
+        value="0.00356224087432475" />
       <inertia
-        ixx="0.0017742176306046"
-        ixy="-6.48927865170148E-05"
-        ixz="7.9011844091808E-05"
-        iyy="0.0014773291886702"
-        iyz="0.000143409857300473"
-        izz="0.000431696852415732" />
+        ixx="2.4170216452609E-07"
+        ixy="-5.69680408157273E-12"
+        ixz="3.31883071764751E-08"
+        iyy="2.43606043401954E-07"
+        iyz="3.64382773947614E-12"
+        izz="1.21622656355832E-07" />
     </inertial>
     <visual>
       <origin
@@ -1153,7 +1153,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="meshes/ring_link3.STL" />
+          filename="package://real_hand_pybullet/urdf/meshes/real_hand_l20_8_left/ring_link3.STL" />
       </geometry>
       <material
         name="">
@@ -1167,7 +1167,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="meshes/ring_link3.STL" />
+          filename="package://real_hand_pybullet/urdf/meshes/real_hand_l20_8_left/ring_link3.STL" />
       </geometry>
     </collision>
   </link>
@@ -1175,8 +1175,8 @@
     name="ring_joint3"
     type="revolute">
     <origin
-      xyz="-0.002743 0 0.044215"
-      rpy="0 0.010005 0" />
+      xyz="0.0084126 -0.0012 0.03069"
+      rpy="0 0 0" />
     <parent
       link="ring_link2" />
     <child
@@ -1193,17 +1193,17 @@
     name="ring_link4">
     <inertial>
       <origin
-        xyz="-0.000349704869524039 -7.45785706329771E-07 5.33973445393521E-05"
+        xyz="1.88221977934222E-09 -0.000999999999998225 -1.53765888910584E-14"
         rpy="0 0 0" />
       <mass
-        value="1.24999999999997E-07" />
+        value="1.57079632679489E-06" />
       <inertia
-        ixx="5.20833333333312E-15"
-        ixy="-1.56062827940593E-29"
-        ixz="6.55370848915644E-29"
-        iyy="5.20833333333329E-15"
-        iyz="-5.78853771655365E-29"
-        izz="5.20833333333316E-15" />
+        ixx="6.21773546021469E-13"
+        ixy="8.00741478549953E-19"
+        ixz="1.22804709224714E-29"
+        iyy="1.96349540850869E-13"
+        iyz="-6.52449275411388E-24"
+        izz="6.21773546022976E-13" />
     </inertial>
     <visual>
       <origin
@@ -1211,7 +1211,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="meshes/ring_link4.STL" />
+          filename="package://real_hand_pybullet/urdf/meshes/real_hand_l20_8_left/ring_link4.STL" />
       </geometry>
       <material
         name="">
@@ -1225,7 +1225,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="meshes/ring_link4.STL" />
+          filename="package://real_hand_pybullet/urdf/meshes/real_hand_l20_8_left/ring_link4.STL" />
       </geometry>
     </collision>
   </link>
@@ -1233,7 +1233,7 @@
     name="ring_joint4"
     type="fixed">
     <origin
-      xyz="-0.0126773959122548 -0.0059997221972472 0.0437367152831721"
+      xyz="-0.013709 0.0063957 0.024981"
       rpy="0 0 0" />
     <parent
       link="ring_link3" />
@@ -1246,17 +1246,17 @@
     name="little_link0">
     <inertial>
       <origin
-        xyz="-0.0107436441658412 0.0428153673335656 0.0202102525407014"
+        xyz="0.00582427470510147 5.60667605370435E-07 0.00224749650965381"
         rpy="0 0 0" />
       <mass
-        value="0.269152839443886" />
+        value="0.000858838601128306" />
       <inertia
-        ixx="0.00177870430091372"
-        ixy="-5.79188233097981E-05"
-        ixz="1.41579791394582E-05"
-        iyy="0.00147732829997939"
-        iyz="0.00014636478011374"
-        izz="0.000427211070797417" />
+        ixx="3.48992698304468E-08"
+        ixy="-1.21006307549431E-13"
+        ixz="-4.85001741294204E-09"
+        iyy="2.50587256480258E-08"
+        iyz="-7.64517074797356E-14"
+        izz="4.06384245059924E-08" />
     </inertial>
     <visual>
       <origin
@@ -1264,7 +1264,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="meshes/little_link0.STL" />
+          filename="package://real_hand_pybullet/urdf/meshes/real_hand_l20_8_left/little_link0.STL" />
       </geometry>
       <material
         name="">
@@ -1278,7 +1278,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="meshes/little_link0.STL" />
+          filename="package://real_hand_pybullet/urdf/meshes/real_hand_l20_8_left/little_link0.STL" />
       </geometry>
     </collision>
   </link>
@@ -1286,8 +1286,8 @@
     name="little_joint0"
     type="revolute">
     <origin
-      xyz="0.013525 -0.03386 0.1192"
-      rpy="0.0026858 -0.0095978 -2.5781E-05" />
+      xyz="-0.02467 0.038102 0.14521"
+      rpy="0 0 0" />
     <parent
       link="base_link" />
     <child
@@ -1295,8 +1295,8 @@
     <axis
       xyz="1 0 0" />
     <limit
-      lower="0"
-      upper="0.18"
+      lower="-0.26"
+      upper="0.26"
       effort="100"
       velocity="1" />
   </joint>
@@ -1304,17 +1304,17 @@
     name="little_link1">
     <inertial>
       <origin
-        xyz="-0.00535748950691302 0.0407415104772609 0.00325808418821283"
+        xyz="-0.000683358318394525 0.00480779505361396 0.0243017723141432"
         rpy="0 0 0" />
       <mass
-        value="0.269152839443886" />
+        value="0.00458483722148321" />
       <inertia
-        ixx="0.00177830797201457"
-        ixy="-5.93211342638309E-05"
-        ixz="2.71279767150518E-05"
-        iyy="0.00147732829997952"
-        iyz="0.000145802064392169"
-        izz="0.00042760739969644" />
+        ixx="7.10362743708158E-07"
+        ixy="9.34947196941945E-12"
+        ixz="9.35323595443093E-09"
+        iyy="7.20266710581344E-07"
+        iyz="1.54175118354606E-10"
+        izz="1.3865349669603E-07" />
     </inertial>
     <visual>
       <origin
@@ -1322,7 +1322,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="meshes/little_link1.STL" />
+          filename="package://real_hand_pybullet/urdf/meshes/real_hand_l20_8_left/little_link1.STL" />
       </geometry>
       <material
         name="">
@@ -1336,7 +1336,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="meshes/little_link1.STL" />
+          filename="package://real_hand_pybullet/urdf/meshes/real_hand_l20_8_left/little_link1.STL" />
       </geometry>
     </collision>
   </link>
@@ -1344,8 +1344,8 @@
     name="little_joint1"
     type="revolute">
     <origin
-      xyz="-0.0054177 0.0020739 0.016901"
-      rpy="0 0.0095993 0" />
+      xyz="0.011115 -0.0047959 0"
+      rpy="0 0 0" />
     <parent
       link="little_link0" />
     <child
@@ -1362,17 +1362,17 @@
     name="little_link2">
     <inertial>
       <origin
-        xyz="-0.00478993701934439 0.0368153673294238 -0.0389124529640016"
+        xyz="0.00281619330244208 0.00381383184691882 0.0165996182183428"
         rpy="0 0 0" />
       <mass
-        value="0.269152839443886" />
+        value="0.00240942424544181" />
       <inertia
-        ixx="0.00177830797201457"
-        ixy="-5.93211342638289E-05"
-        ixz="2.71279767150392E-05"
-        iyy="0.00147732829997952"
-        iyz="0.000145802064392158"
-        izz="0.000427607399696436" />
+        ixx="2.3808407526343E-07"
+        ixy="-7.16794250733563E-12"
+        ixz="-1.1550225067878E-08"
+        iyy="1.83480041333043E-07"
+        iyz="5.62453376024316E-12"
+        izz="9.81871447257061E-08" />
     </inertial>
     <visual>
       <origin
@@ -1380,7 +1380,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="meshes/little_link2.STL" />
+          filename="package://real_hand_pybullet/urdf/meshes/real_hand_l20_8_left/little_link2.STL" />
       </geometry>
       <material
         name="">
@@ -1394,7 +1394,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="meshes/little_link2.STL" />
+          filename="package://real_hand_pybullet/urdf/meshes/real_hand_l20_8_left/little_link2.STL" />
       </geometry>
     </collision>
   </link>
@@ -1402,7 +1402,7 @@
     name="little_joint2"
     type="revolute">
     <origin
-      xyz="-0.00056755 0.0039261 0.042171"
+      xyz="-0.0034454 0.0010465 0.044883"
       rpy="0 0 0" />
     <parent
       link="little_link1" />
@@ -1420,17 +1420,17 @@
     name="little_link3">
     <inertial>
       <origin
-        xyz="0.000784355295522267 0.0382613536337701 -0.0825192173202409"
+        xyz="-0.00677506040423783 0.00520857144001198 0.00971672722898123"
         rpy="0 0 0" />
       <mass
-        value="0.269152839443886" />
+        value="0.00356224402551602" />
       <inertia
-        ixx="0.00177561171305537"
-        ixy="-6.46550062862099E-05"
-        ixz="6.49912386916088E-05"
-        iyy="0.00147198294155489"
-        iyz="0.000162208979298413"
-        izz="0.000435649017080279" />
+        ixx="2.41702539339338E-07"
+        ixy="-5.71262968317265E-12"
+        ixz="3.31883161328461E-08"
+        iyy="2.4360638310237E-07"
+        iyz="3.64198152666006E-12"
+        izz="1.21622671153383E-07" />
     </inertial>
     <visual>
       <origin
@@ -1438,7 +1438,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="meshes/little_link3.STL" />
+          filename="package://real_hand_pybullet/urdf/meshes/real_hand_l20_8_left/little_link3.STL" />
       </geometry>
       <material
         name="">
@@ -1452,7 +1452,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="meshes/little_link3.STL" />
+          filename="package://real_hand_pybullet/urdf/meshes/real_hand_l20_8_left/little_link3.STL" />
       </geometry>
     </collision>
   </link>
@@ -1460,14 +1460,14 @@
     name="little_joint3"
     type="revolute">
     <origin
-      xyz="-0.0031697 0 0.04425"
-      rpy="-0.017453 0.02891 0" />
+      xyz="0.0084126 -0.0012 0.03069"
+      rpy="0 0 0" />
     <parent
       link="little_link2" />
     <child
       link="little_link3" />
     <axis
-      xyz="0 0.99985 0.017452" />
+      xyz="0 1 0" />
     <limit
       lower="0"
       upper="1.57"
@@ -1478,17 +1478,17 @@
     name="little_link4">
     <inertial>
       <origin
-        xyz="-0.000349704869519324 -1.67759814370672E-06 5.33761957042661E-05"
+        xyz="1.88221978281167E-09 -0.000999999999998211 -1.53488333154428E-14"
         rpy="0 0 0" />
       <mass
-        value="1.24999999999999E-07" />
+        value="1.57079632679489E-06" />
       <inertia
-        ixx="5.20833333333328E-15"
-        ixy="-7.32373379952134E-30"
-        ixz="-6.97648863054832E-30"
-        iyy="5.20833333333331E-15"
-        iyz="6.25865241055767E-29"
-        izz="5.20833333333331E-15" />
+        ixx="6.21773546021469E-13"
+        ixy="8.00741478549952E-19"
+        ixz="1.22814444842727E-29"
+        iyy="1.96349540850869E-13"
+        iyz="-6.5249857565379E-24"
+        izz="6.21773546022976E-13" />
     </inertial>
     <visual>
       <origin
@@ -1496,7 +1496,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="meshes/little_link4.STL" />
+          filename="package://real_hand_pybullet/urdf/meshes/real_hand_l20_8_left/little_link4.STL" />
       </geometry>
       <material
         name="">
@@ -1510,7 +1510,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="meshes/little_link4.STL" />
+          filename="package://real_hand_pybullet/urdf/meshes/real_hand_l20_8_left/little_link4.STL" />
       </geometry>
     </collision>
   </link>
@@ -1518,7 +1518,7 @@
     name="little_joint4"
     type="fixed">
     <origin
-      xyz="-0.0122498806169438 -0.00676173621814952 0.0436028417314645"
+      xyz="-0.013709 0.0063957 0.024981"
       rpy="0 0 0" />
     <parent
       link="little_link3" />
@@ -1527,4 +1527,5 @@
     <axis
       xyz="0 0 0" />
   </joint>
+
 </robot>

@@ -8,63 +8,64 @@ import time,os,sys
 from std_msgs.msg import String,Header
 from sensor_msgs.msg import JointState
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
-from utils.color_msg import ColorMsg
-from utils.mapping import *
-from utils.l20_sim_controller import L20SimController
-from utils.l21_sim_controller import L21SimController
-from utils.t24_sim_controller import T24SimController
-from utils.l10_sim_controller import L10SimController
-from utils.l7_sim_controller import L7SimController
+from realhand_sim_shared.utils.color_msg import ColorMsg
+from realhand_sim_shared.utils.mapping import *
+from realhand_sim_shared.utils.l20_sim_controllerl20_sim_controller import L20SimController
+from realhand_sim_shared.utils.l21_sim_controller import L21SimController
+from realhand_sim_shared.utils.t24_sim_controller import T24SimController
+from realhand_sim_shared.utils.l10_sim_controller import L10SimController
+from realhand_sim_shared.utils.l7_sim_controller import L7SimController
 
 '''
-五指全部展开
+All five fingers fully extended
 rostopic pub /cb_left_hand_control_cmd sensor_msgs/JointState "{header: {seq: 0, stamp: {secs: 0, nsecs: 0}, frame_id: ''}, name: [], position: [0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0,0,0,0,0,0,0,0,0], velocity: [], effort: []}" -r 10
-五指根部弯曲
+Five-finger base joints flexion
 rostopic pub /cb_left_hand_control_cmd sensor_msgs/JointState "{header: {seq: 0, stamp: {secs: 0, nsecs: 0}, frame_id: ''}, name: [], position: [-1.05,1.66,1.66,1.66,1.66,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0], velocity: [], effort: []}" -r 10
-五指横摆
+Five-finger lateral swing
 rostopic pub /cb_left_hand_control_cmd sensor_msgs/JointState "{header: {seq: 0, stamp: {secs: 0, nsecs: 0}, frame_id: ''}, name: [], position: [0.0,0.0,0.0,0.0,0.0,1.45,-0.26,-0.26,-0.26,-0.26,0,0,0,0,0,0,0,0,0,0], velocity: [], effort: []}" -r 10
-单独大拇指侧摆
+Thumb lateral swing only
 rostopic pub /cb_left_hand_control_cmd sensor_msgs/JointState "{header: {seq: 0, stamp: {secs: 0, nsecs: 0}, frame_id: ''}, name: [], position: [0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.84,0,0,0,0,0,0,0,0,0], velocity: [], effort: []}" -r 10
 
-五指中关节弯曲
+Five-finger middle joint flexion
 rostopic pub /cb_right_hand_control_cmd sensor_msgs/JointState "{header: {seq: 0, stamp: {secs: 0, nsecs: 0}, frame_id: ''}, name: [], position: [0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.32,1.36,1.36,1.36,1.36], velocity: [], effort: []}" -r 10
 '''
 #
 #urdf_path_left = rospack.get_path('linker_hand_pybullet') + "/urdf/linker_hand_l20_8_left.urdf"
 class LinkerHandPybullet:
+    # This code looks incomplete? It does not reference the actual URDF files. Needs testing. email support@realhand.com for help.
     def __init__(self,hand=None):
         self.hand = hand
         if self.hand == "L20":
-            self.left_hand_sim_position = [0] * 26 # urdf有26个关节，需要进行数据转换
-            self.right_hand_sim_position = [0] * 26 # urdf有26个关节，需要进行数据转换
+            self.left_hand_sim_position = [0] * 26 # the urdf has 26 joints; data conversion is required
+            self.right_hand_sim_position = [0] * 26 # the urdf has 26 joints; data conversion is required
             self.l20_sim = L20SimController()
-            #print(f"机器人关节总数: {self.left_hand_num_joints}")
+            #print(f"Total number of robot joints: {self.left_hand_num_joints}")
             rospy.Subscriber("/cb_left_hand_control_cmd",JointState,self.l20_left_hand_cmd_callback,queue_size=10)
             rospy.Subscriber("/cb_right_hand_control_cmd",JointState,self.l20_right_hand_cmd_callback,queue_size=10)
-            ColorMsg(msg=f"当前模拟环境为{self.hand}", color="green")
+            ColorMsg(msg=f"Current simulation environment is {self.hand}", color="green")
             self.l20_sim.showSim()
         elif self.hand == "L7":
             self.l7_sim = L7SimController()
             rospy.Subscriber("/cb_left_hand_control_cmd",JointState,self.l7_left_hand_cmd_callback,queue_size=10)
             rospy.Subscriber("/cb_right_hand_control_cmd",JointState,self.l7_right_hand_cmd_callback,queue_size=10)
-            ColorMsg(msg=f"当前模拟环境为{self.hand}", color="green")
+            ColorMsg(msg=f"Current simulation environment is {self.hand}", color="green")
             self.l7_sim.showSim()
         elif self.hand == "L10":
             self.l10_sim = L10SimController()
             rospy.Subscriber("/cb_left_hand_control_cmd",JointState,self.l10_left_hand_cmd_callback,queue_size=10)
             rospy.Subscriber("/cb_right_hand_control_cmd",JointState,self.l10_right_hand_cmd_callback,queue_size=10)
-            ColorMsg(msg=f"当前模拟环境为{self.hand}", color="green")
+            ColorMsg(msg=f"Current simulation environment is {self.hand}", color="green")
             self.l10_sim.showSim()
         elif self.hand == "L21":
             self.l21_sim = L21SimController()
             rospy.Subscriber("/cb_left_hand_control_cmd",JointState,self.l21_left_hand_cmd_callback,queue_size=10)
             rospy.Subscriber("/cb_right_hand_control_cmd",JointState,self.l21_right_hand_cmd_callback,queue_size=10)
-            ColorMsg(msg=f"当前模拟环境为{self.hand}", color="green")
+            ColorMsg(msg=f"Current simulation environment is {self.hand}", color="green")
             self.l21_sim.run()
         elif self.hand == "T24":
             self.t24_sim = T24SimController()
             rospy.Subscriber("/cb_right_hand_control_cmd",JointState,self.t24_right_hand_cmd_callback,queue_size=10)
-            ColorMsg(msg=f"当前模拟环境为{self.hand}", color="green")
+            ColorMsg(msg=f"Current simulation environment is {self.hand}", color="green")
             self.t24_sim.run()
 
     def l7_left_hand_cmd_callback(self, msg):
@@ -174,25 +175,25 @@ class LinkerHandPybullet:
         self.l10_sim.set_right_position(pos=right_hand_pos)
 
 
-    # 左手回调
+    # Left hand callback
     def l20_left_hand_cmd_callback(self, msg):
         # 4,5,9,10,13,14,15,19,20,24,25
         cmd_pos = list(msg.position)
-        # 五指根部弯曲
+        # Five-finger base joints flexion
         self.left_hand_sim_position[0] = self.map_value(cmd_pos[0],to_min=-1.05,to_max=0.49, from_min=0, from_max=255)
         self.left_hand_sim_position[7] = self.map_value(cmd_pos[1],to_min=0.0,to_max=1.66)
         self.left_hand_sim_position[12] = self.map_value(cmd_pos[2],to_min=0.0,to_max=1.66)
         self.left_hand_sim_position[17] = self.map_value(cmd_pos[3],to_min=0.0,to_max=1.66)
         self.left_hand_sim_position[22] = self.map_value(cmd_pos[4],to_min=0.0,to_max=1.66)
-        # 五指横摆
+        # Five-finger lateral swing
         self.left_hand_sim_position[1] = self.map_value(cmd_pos[5],to_min=0.0,to_max=1.45)
         self.left_hand_sim_position[6] = self.map_value(cmd_pos[6],to_min=-0.26,to_max=0.26, from_min=255, from_max=0)
         self.left_hand_sim_position[11] = self.map_value(cmd_pos[7],to_min=-0.26,to_max=0.26, from_min=255, from_max=0)
         self.left_hand_sim_position[16] = self.map_value(cmd_pos[8],to_min=-0.26,to_max=0.26, from_min=255, from_max=0)
         self.left_hand_sim_position[21] = self.map_value(cmd_pos[9],to_min=-0.26,to_max=0.26, from_min=255, from_max=0)
-        # 单独大拇指侧摆
+        # Thumb lateral swing only
         self.left_hand_sim_position[2] = -self.map_value(cmd_pos[10],to_min=0.0,to_max=0.84)
-        # 五指中关节弯曲
+        # Five-finger middle joint flexion
         self.left_hand_sim_position[3] = -self.map_value(cmd_pos[15],to_min=0.0,to_max=1.34)
         self.left_hand_sim_position[8] = self.map_value(cmd_pos[16],to_min=0.0,to_max=1.36)
         self.left_hand_sim_position[13] = self.map_value(cmd_pos[17],to_min=0.0,to_max=1.36)
@@ -200,24 +201,24 @@ class LinkerHandPybullet:
         self.left_hand_sim_position[23] = self.map_value(cmd_pos[19],to_min=0.0,to_max=1.36)
         self.l20_sim.set_left_position(pos=self.left_hand_sim_position)
     
-    # 右手回调
+    # Right hand callback
     def l20_right_hand_cmd_callback(self, msg):
         cmd_pos = list(msg.position)
-        # 五指根部弯曲
+        # Five-finger base joints flexion
         self.right_hand_sim_position[0] = -self.map_value(cmd_pos[0],to_min=-1.05,to_max=0.49, from_min=0, from_max=255)
         self.right_hand_sim_position[7] = self.map_value(cmd_pos[1],to_min=0.0,to_max=1.66)
         self.right_hand_sim_position[12] = self.map_value(cmd_pos[2],to_min=0.0,to_max=1.66)
         self.right_hand_sim_position[17] = self.map_value(cmd_pos[3],to_min=0.0,to_max=1.66)
         self.right_hand_sim_position[22] = self.map_value(cmd_pos[4],to_min=0.0,to_max=1.66)
-        # 五指横摆
+        # Five-finger lateral swing
         self.right_hand_sim_position[1] = -self.map_value(cmd_pos[5],to_min=0.0,to_max=1.45)
         self.right_hand_sim_position[6] = -self.map_value(cmd_pos[6],to_min=-0.26,to_max=0.26, from_min=255, from_max=0)
         self.right_hand_sim_position[11] = -self.map_value(cmd_pos[7],to_min=-0.26,to_max=0.26, from_min=255, from_max=0)
         self.right_hand_sim_position[16] = -self.map_value(cmd_pos[8],to_min=-0.26,to_max=0.26, from_min=255, from_max=0)
         self.right_hand_sim_position[21] = -self.map_value(cmd_pos[9],to_min=-0.26,to_max=0.26, from_min=255, from_max=0)
-        # 单独大拇指侧摆
+        # Thumb lateral swing only
         self.right_hand_sim_position[2] = -self.map_value(cmd_pos[10],to_min=0.0,to_max=0.84)
-        # 五指中关节弯曲
+        # Five-finger middle joint flexion
         self.right_hand_sim_position[3] = self.map_value(cmd_pos[15],to_min=0.0,to_max=1.34)
         self.right_hand_sim_position[8] = self.map_value(cmd_pos[16],to_min=0.0,to_max=1.36)
         self.right_hand_sim_position[13] = self.map_value(cmd_pos[17],to_min=0.0,to_max=1.36)
@@ -317,42 +318,40 @@ class LinkerHandPybullet:
 
     def map_value(self,value, to_min, to_max, from_min=255, from_max=0):
         """
-        将一个范围内的值映射到另一个范围，支持输入范围反向（例如 255 对应最小值，0 对应最大值）。
+        Map a value from one range to another, supporting a reversed input range (e.g., 255 corresponds to the minimum value and 0 corresponds to the maximum value).
 
-        参数：
-        - value: 需要映射的值
-        - from_min: 原始范围的最小值
-        - from_max: 原始范围的最大值
-        - to_min: 目标范围的最小值
-        - to_max: 目标范围的最大值
+        Parameters:
+        - value: the value to be mapped
+        - from_min: the minimum of the original range
+        - from_max: the maximum of the original range
+        - to_min: the minimum of the target range
+        - to_max: the maximum of the target range
 
-        返回：
-        - 映射后的值
+        Returns:
+        - the mapped value
         """
-        # 检查原始范围是否有效
+        # Check whether the original range is valid
         if from_min == from_max:
-            raise ValueError("原始范围的最小值和最大值不能相等")
+            raise ValueError("The minimum and maximum of the original range cannot be equal")
         
-        # 反转范围处理：如果 from_min > from_max，则调整计算顺序
+        # Reversed-range handling: if from_min > from_max, adjust the computation order
         if from_min > from_max:
-            scaled_value = (from_min - value) / (from_min - from_max)  # 归一化到 [0, 1]
+            scaled_value = (from_min - value) / (from_min - from_max)  # normalize to [0, 1]
         else:
-            scaled_value = (value - from_min) / (from_max - from_min)  # 正常归一化到 [0, 1]
+            scaled_value = (value - from_min) / (from_max - from_min)  # normal normalization to [0, 1]
 
-        # 映射到目标范围
+        # Map to the target range
         mapped_value = to_min + scaled_value * (to_max - to_min)
         return mapped_value
 
 if __name__ == "__main__":
     # rosrun linker_hand_pybullet linker_hand_pybullet.py _hand_type:=L10
-    #2.初始化 ROS 节点:命名(唯一)
+    # 2. Initialize ROS node: name (unique)
     rospy.init_node("linker_hand_pybullet", anonymous=True)
-    # 获取参数
-    hand = rospy.get_param('~hand_type', default="L10")  # 默认获取全局参数
+    # Get parameter
+    hand = rospy.get_param('~hand_type', default="L10")  # get private parameter by default
     rospy.loginfo(f"hand parameter: {hand}")
     if hand == None:
         rospy.loginfo(f"hand parameter: {hand}")
         exit()
     lp = LinkerHandPybullet(hand=hand)
-
-

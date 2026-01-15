@@ -3,8 +3,9 @@ import rclpy, os, threading, time
 from rclpy.node import Node
 from std_msgs.msg import String
 from sensor_msgs.msg import JointState
+from importlib.resources import files
 
-from .utils.mapping import *
+from realhand_sim_shared.utils.mapping import *
 L6_MAPPING = {
     0: 1,
     1: 0,
@@ -40,26 +41,26 @@ L7_MAPPING = {
     23: (5, 1)
 }
 L10_MAPPING = {
-    0: 9,    # 特殊关节
-    1: 1,    # 拇指
-    2: 0,    # 食指基关节
-    3: 0,    # 食指中关节
-    4: 0,    # 食指末关节
-    6: 6,    # 特殊关节
-    7: 2,    # 中指基关节
-    8: 2,    # 中指中关节
-    9: 2,    # 中指末关节
-    11: 3,   # 无名指基关节
-    12: 3,   # 无名指中关节
-    13: 3,   # 无名指末关节
-    15: 7,   # 特殊关节
-    16: 4,   # 小指基关节
-    17: 4,   # 小指中关节
-    18: 4,   # 小指末关节
-    20: 8,   # 特殊关节
-    21: 5,   # 额外关节1
-    22: 5,   # 额外关节2
-    23: 5    # 额外关节3
+    0: 9,    # Special joint
+    1: 1,    # Thumb
+    2: 0,    # Index finger base joint
+    3: 0,    # Index finger middle joint
+    4: 0,    # Index finger distal joint
+    6: 6,    # Special joint
+    7: 2,    # Middle finger base joint
+    8: 2,    # Middle finger middle joint
+    9: 2,    # Middle finger distal joint
+    11: 3,   # Ring finger base joint
+    12: 3,   # Ring finger middle joint
+    13: 3,   # Ring finger distal joint
+    15: 7,   # Special joint
+    16: 4,   # Little finger base joint
+    17: 4,   # Little finger middle joint
+    18: 4,   # Little finger distal joint
+    20: 8,   # Special joint
+    21: 5,   # Extra joint 1
+    22: 5,   # Extra joint 2
+    23: 5    # Extra joint 3
 }
 L20_MAPPING = {
     0: 0, 7: 1, 12: 2, 17: 3, 22: 4,
@@ -93,25 +94,27 @@ class LinkerHandPyBulletNode(Node):
     
 
     def init_sim(self):
-        urdf_path_left = f"{self.current_dir}/urdf/{self.hand_joint.lower()}/left/linkerhand_{self.hand_joint.lower()}_left.urdf"
-        urdf_path_right = f"{self.current_dir}/urdf/{self.hand_joint.lower()}/right/linkerhand_{self.hand_joint.lower()}_right.urdf"
+        hand = self.hand_joint.lower()
+        urdf_path_left = str(files("realhand_sim_shared").joinpath("urdf", hand, "left", f"linkerhand_{hand}_left.urdf"))
+        urdf_path_right = str(files("realhand_sim_shared").joinpath("urdf", hand, "right", f"linkerhand_{hand}_right.urdf"))
+        
         if self.hand_joint == "L6":
-            from linker_hand_pybullet_ros2.utils.l6_sim_controller import L6SimController
+            from realhand_sim_shared.utils.l6_sim_controller import L6SimController
             self.sim_controller = L6SimController(urdf_path_left=urdf_path_left, urdf_path_right=urdf_path_right)
         elif self.hand_joint == "L7":
-            from linker_hand_pybullet_ros2.utils.l7_sim_controller import L7SimController
+            from realhand_sim_shared.utils.l7_sim_controller import L7SimController
             self.sim_controller = L7SimController(urdf_path_left=urdf_path_left, urdf_path_right=urdf_path_right)
         elif self.hand_joint == "L10":
-            from linker_hand_pybullet_ros2.utils.l10_sim_controller import L10SimController
+            from realhand_sim_shared.utils.l10_sim_controller import L10SimController
             self.sim_controller = L10SimController(urdf_path_left=urdf_path_left, urdf_path_right=urdf_path_right)
         elif self.hand_joint == "L20":
-            from linker_hand_pybullet_ros2.utils.l20_sim_controller import L20SimController
+            from realhand_sim_shared.utils.l20_sim_controller import L20SimController
             urdf_path_left = f"{self.current_dir}/urdf/{self.hand_joint.lower()}/linker_hand_l20_left/linker_hand_{self.hand_joint.lower()}_left.urdf"
             print(urdf_path_left)
             urdf_path_right = f"{self.current_dir}/urdf/{self.hand_joint.lower()}/linker_hand_l20_right/linker_hand_{self.hand_joint.lower()}_right.urdf"
             self.sim_controller = L20SimController(urdf_path_left=urdf_path_left, urdf_path_right=urdf_path_right)
         elif self.hand_joint == "L21":
-            from linker_hand_pybullet_ros2.utils.l21_sim_controller import L21SimController
+            from realhand_sim_shared.utils.l21_sim_controller import L21SimController
             self.sim_controller = L21SimController(urdf_path_left=urdf_path_left, urdf_path_right=urdf_path_right)
 
         
@@ -123,7 +126,7 @@ class LinkerHandPyBulletNode(Node):
                 #self.get_logger().info("Left hand position is empty, waiting for data...")
                 pass
             else:
-                # TODO: 这里返回的是仿真关节数，需要转换为topic发布的关节数
+                # TODO: This returns the number of simulated joints and needs to be converted to the number of joints published on the topic
                 left_pose = self.sim_controller.left_hand_current_position
                 if self.hand_joint == "L21":
                     tmp_pose = [0.00] * 25
@@ -211,16 +214,16 @@ class LinkerHandPyBulletNode(Node):
 
 
     def joint_msg(self,hand,position,velocity,effort):
-        # 初始化JointState消息
+        # Initialize JointState message
         joint_state_msg = JointState()
         joint_state_msg.header.stamp = self.get_clock().now().to_msg()
         if hand == "left":
-            joint_state_msg.name = []  # 关节名称
+            joint_state_msg.name = []  # Joint names
         elif hand == "right":
-            joint_state_msg.name = []  # 关节名称
-        joint_state_msg.position = position  # 关节位置（弧度）
-        joint_state_msg.velocity = velocity  # 关节速度
-        joint_state_msg.effort = effort  # 关节力矩
+            joint_state_msg.name = []  # Joint names
+        joint_state_msg.position = position  # Joint positions (radians)
+        joint_state_msg.velocity = velocity  # Joint velocities
+        joint_state_msg.effort = effort  # Joint torques
         return joint_state_msg
 
             

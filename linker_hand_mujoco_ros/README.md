@@ -5,30 +5,28 @@ LinkerHand — skillful hands, creating everything.
 The LinkerHand dexterous hand ROS SDK is a software tool developed by LinkerHand (Beijing) Technology Co., Ltd. It is used to drive its dexterous hand product line and provides functional examples. It supports multiple devices (such as laptops, desktops, Raspberry Pi, Jetson, etc.), mainly serving fields such as humanoid robots, industrial automation, and research institutes. It is suitable for scenarios such as humanoid robots, flexible production lines, embodied large-model training, and data collection.
 
 # 1.1 **Notes**
-This program provides a PyBullet simulation environment for the LinkerHand series of dexterous hands, making it convenient for users to become familiar with how to use LinkerHand dexterous hand products, and to perform model training and data collection in a simulation environment.
+This program provides a Mujoco simulation environment for the LinkerHand series of dexterous hands, making it convenient for users to become familiar with how to use LinkerHand dexterous hand products, and to perform model training and data collection in a simulation environment.
 
 # 2. **Usage Instructions**
 ```bash
-$ mkdir -p Linker_Hand_Pybullet_ros/src    # create directory
-$ cd Linker_Hand_Pybullet_ros/src    # enter directory
+$ mkdir -p Linker_Hand_Mujoco_ros/src    # create directory
+$ cd Linker_Hand_Mujoco_ros/src    # enter directory
 $ # 1. Clone the repository (use sparse mode + blob filtering to save space)
 $ git clone --filter=blob:none --sparse https://github.com/linkerbotai/linker_hand_sim.git
 $ # 2. Enter the repository directory
 $ cd linker_hand_sim
 $ # 3. Set the sparse-checkout directory
-$ git sparse-checkout set linker_hand_pybullet_ros
-$ cd Linker_Hand_Pybullet_ros/src/linker_hand_sim/
-$ pip install -r requirements.txt # install dependencies
-$ cd Linker_Hand_Pybullet_ros/src/linker_hand_sim/linker_hand_pybullet_ros/scripts/
-$ sudo chmod a+x linker_hand_pybullet.py
+$ git sparse-checkout set linker_hand_mujoco_ros
+$ cd Linker_Hand_Mujoco_ros/src/linker_hand_sim/
+$ pip install -r requirements.txt
 ```
-
-- Start the PyBullet simulation
+- Modify linker_hand_mujoco_ros/launch/linker_hand_mujoco.launch  
+Just edit according to the parameter descriptions in the file.
 ```bash
-$ cd Linker_Hand_Pybullet_ros/
+$ cd Linker_Hand_Mujoco_ros/
 $ catkin_make
 $ source ./devel/setup.bash
-$ rosrun linker_hand_pybullet_ros linker_hand_pybullet.py _hand_type:=L10  # change L10 to the desired hand model: L7, L10, L20, L21
+$ roslaunch linker_hand_mujoco_ros linker_hand_mujoco.launch
 ```
 
 # 3. **Topic Description**
@@ -43,9 +41,8 @@ position: [200,200,200,200,200,200,200,200,200,200]
 velocity: [0]
 effort: [0]"
 ```
-
 - position description
-  L7:  ["Thumb flexion", "Thumb abduction/adduction (side swing)", "Index finger flexion", "Middle finger flexion", "Ring finger flexion", "Little finger flexion", "Thumb rotation"]
+  L7:  ["Thumb flexion", "Thumb roll (lateral swing)", "Index finger flexion", "Middle finger flexion", "Ring finger flexion", "Little finger flexion", "Thumb rotation"]
 
   L10: ["Thumb base", "Thumb lateral swing", "Index base", "Middle base", "Ring base", "Little finger base", "Index lateral swing", "Ring lateral swing", "Little finger lateral swing", "Thumb rotation"]
 

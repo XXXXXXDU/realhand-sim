@@ -1,10 +1,10 @@
-
-import rclpy,math,sys                                     # ROS2 Python接口库
-from rclpy.node import Node                      # ROS2 节点类
+import rclpy,math,sys                            # ROS2 Python interface library
+from rclpy.node import Node                      # ROS2 node class
 import rclpy.time
 from std_msgs.msg import String, Header, Float32MultiArray
 from sensor_msgs.msg import JointState
 import time,threading, json
+from importlib.resources import files
 
 
 import sys,os
@@ -15,7 +15,7 @@ import mujoco, time
 import mujoco.viewer
 from PyQt5.QtWidgets import QApplication, QWidget, QSlider, QVBoxLayout, QLabel
 from PyQt5.QtCore import Qt
-from .utils.mapping import *
+from realhand_sim_shared.utils.mujoco_mapping import *
 
 JOINT_CONFIG = {
     "L6": {
@@ -47,25 +47,26 @@ class MujocoNode(Node):
         self.declare_parameter("hand_joint", "L10")
         self.hand_joint = self.get_parameter('hand_joint').get_parameter_value().string_value
         self.create_subscription(JointState,f"/cb_{self.hand_type}_hand_control_cmd",self.hand_cb,10)
-        # 直接通过字典获取配置
+        # Get configuration directly from the dictionary
         joint_config = JOINT_CONFIG.get(self.hand_joint)
         if joint_config:
             self.joint_map = joint_config["map"]
             self.joint_arc = joint_config["arc"]
         else:
-            # 处理未匹配的情况（可选）
+            # Handle the unmatched case (optional)
             self.joint_map = None
             self.joint_arc = None
-        XML_PATH = os.path.dirname(os.path.abspath(__file__))+f"/urdf/{self.hand_joint.upper()}/linker_hand_{self.hand_joint.lower()}_{self.hand_type}/linker_hand_{self.hand_joint.lower()}_{self.hand_type}.xml"
 
-        # --- 加载模型 ---
+        XML_PATH = str(files("realhand_sim_shared").joinpath("muj_urdf", self.hand_joint.upper(), f"linker_hand_{self.hand_joint.lower()}_{self.hand_type}", f"linker_hand_{self.hand_joint.lower()}_{self.hand_type}.xml"))
+
+        # --- Load the model ---
         self.model = mujoco.MjModel.from_xml_path(XML_PATH)
-        self.model.dof_damping[:] = 0.8  # 所有关节都设置为 1.0 阻尼
+        self.model.dof_damping[:] = 0.8  # Set damping to 1.0 for all joints
         self.data = mujoco.MjData(self.model)
 
 
         print("=" * 20,flush=True)
-        print(mujoco.mj_versionString(),flush=True)  # 查看MuJoCo版本
+        print(mujoco.mj_versionString(),flush=True)  # Check MuJoCo version
         print("=" * 20,flush=True)
         self.data.qpos[:] = 0
         self.data.qvel[:] = 0
@@ -75,19 +76,19 @@ class MujocoNode(Node):
         joint_count = self.model.nu
         joint_names = []
         for i in range(self.model.njnt):
-            joint_name = self.model.joint(i).name  # 获取第i个关节的名称
+            joint_name = self.model.joint(i).name  # Get the name of the i-th joint
             joint_names.append(joint_name)
             print(f"Joint {i}: {joint_name}",flush=True)
         self.ctrl_values = np.zeros(joint_count)
 
-        # 获取 actuator 控制范围（注意：actuator 不是 joint 本体）
+        # Get actuator control ranges (note: actuator is not the joint body itself)
         self.ctrl_ranges = self.model.actuator_ctrlrange.copy()
         sim_thread = threading.Thread(target=self.mujoco_thread)
         sim_thread.start()
         
 
 
-    # --- MuJoCo 模拟线程 ---
+    # --- MuJoCo simulation thread ---
     def mujoco_thread(self):
         with mujoco.viewer.launch_passive(self.model, self.data) as viewer:
             print("MuJoCo viewer running...")
@@ -111,12 +112,12 @@ class MujocoNode(Node):
                 self.ctrl_values[:] = res
         except Exception as e:
             self.get_logger().error(f"Error in hand_cb: {e}")
-        time.sleep(0.01)  # 确保数据处理的间隔时间
+        time.sleep(0.01)  # Ensure a time interval for data processing
 
 
 
     def map_position_array(self, position, joint_map):
-        mapped_array = [0.0] * len(joint_map)  # 初始化20长度的数组
+        mapped_array = [0.0] * len(joint_map)  # Initialize an array with length 20
         
         for target_idx, source_idx in joint_map.items():
             if source_idx < len(position):
@@ -127,9 +128,9 @@ class MujocoNode(Node):
 
 def main(args=None):
     rclpy.init(args=args)
-    node = MujocoNode()  # 创建 MujocoNode 实例
-    rclpy.spin(node) # 保持节点运行，检测是否收到退出指令（Ctrl+C）
-    rclpy.shutdown() # 关闭rclpy
+    node = MujocoNode()  # Create a MujocoNode instance
+    rclpy.spin(node) # Keep the node running and check whether an exit signal is received (Ctrl+C)
+    rclpy.shutdown() # Shut down rclpy
     
 
 

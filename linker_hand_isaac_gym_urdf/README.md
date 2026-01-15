@@ -1,106 +1,104 @@
-# URDF机器人关节控制器 (Isaac Gym版本)
+# URDF Robot Joint Controller (Isaac Gym Version)
 
-一个基于PyQt5和Isaac Gym的URDF机器人关节可视化和控制工具，支持实时操控机器人关节并观察仿真效果。
+A URDF robot joint visualization and control tool based on PyQt5 and Isaac Gym. It supports real-time joint control and lets you observe the simulation results live.
 
-## 功能特性
+## Features
 
-- 🤖 加载URDF机器人模型
-- 🎮 实时关节位置控制（滑块界面）
-- 📊 关节状态监控和显示
-- 🔄 自动同步关节目标值和当前值
-- 🎯 关节限位检查和显示
-- 📱 响应式GUI布局
-- ⚡ GPU加速物理仿真
+- 🤖 Load URDF robot models
+- 🎮 Real-time joint position control (slider UI)
+- 📊 Joint state monitoring and display
+- 🔄 Automatic synchronization of joint target values and current values
+- 🎯 Joint limit checking and display
+- 📱 Responsive GUI layout
+- ⚡ GPU-accelerated physics simulation
 
-## 系统要求
+## System Requirements
 
-### 硬件要求
-- NVIDIA GPU（支持CUDA）
-- 至少4GB显存
-- Intel/AMD x64处理器
+### Hardware Requirements
+- NVIDIA GPU (CUDA-capable)
+- At least 4GB VRAM
+- Intel/AMD x64 processor
 
-### 软件要求
+### Software Requirements
 - Python 3.8
 - CUDA Toolkit 11.x
 - Ubuntu 20.04
 
-## 依赖库安装
+## Installing Dependencies
 
-### 创建虚拟环境（推荐）
+### Create a Virtual Environment (Recommended)
 ```
 conda create -n linker python=3.8
 conda activate linker
 
-# 安装依赖
+# Install dependencies
 pip install PyQt5 numpy urdfpy
 ```
-### PyTorch（GPU版本）
-按照[这些说明](https://pytorch.org/get-started/locally/)安装Pytorch。
 
-### Isaac Gym（需要从NVIDIA开发者网站下载）
-从[官网](https://developer.nvidia.com/isaac-gym)下载Isaac Gym Preview 4版本，然后按照文档中的安装说明进行安装  
+### PyTorch (GPU Version)
+Install PyTorch according to [these instructions](https://pytorch.org/get-started/locally/).
+
+### Isaac Gym (Download Required from NVIDIA Developer Website)
+Download Isaac Gym Preview 4 from the [official site](https://developer.nvidia.com/isaac-gym), then follow the installation instructions in the documentation.
 ```
 cd isaacgym/python
 pip install -e .
 ```
 
-
-### 核心依赖
+### Core Dependencies
 ```bash
-# PyQt5界面库
+# PyQt5 UI library
 pip install PyQt5
 
-# 数值计算
+# Numerical computing
 pip install numpy
 
-# URDF解析
+# URDF parsing
 pip install urdfpy
 
 ```
 
+## Usage
 
-## 使用方法
-
-### 启动程序
+### Start the Program
 ```bash
 python isaac_urdf.py
 ```
 
-### 基本操作流程
-1. **加载URDF文件**：点击"Load URDF"按钮选择机器人URDF文件
-2. **控制关节**：使用左侧滑块调节各关节角度
-3. **监控状态**：右侧面板显示当前关节位置和仿真状态
-4. **重置位置**：点击"Reset Positions"恢复初始姿态
+### Basic Workflow
+1. **Load a URDF file**: Click the "Load URDF" button to select a robot URDF file
+2. **Control joints**: Use the sliders on the left to adjust joint angles
+3. **Monitor status**: The right panel shows current joint positions and simulation status
+4. **Reset pose**: Click "Reset Positions" to restore the initial pose
 
-### 界面说明
-- **左侧面板**：URDF文件加载和关节控制滑块
-- **右侧面板**：仿真状态显示和当前关节位置监控
-- **底部状态栏**：显示当前操作状态和错误信息
+### UI Overview
+- **Left panel**: URDF loading and joint control sliders
+- **Right panel**: Simulation status display and current joint position monitoring
+- **Bottom status bar**: Shows current operation status and error messages
 
-## 注意事项
+## Notes
 
-⚠️ **重要提醒**：
-1. 确保URDF文件路径中不含中文字符
-2. 第一次运行Isaac Gym可能需要较长初始化时间
-3. 如果出现GPU内存不足，可以尝试减少仿真复杂度
-4. 某些复杂URDF模型可能需要调整物理参数
+⚠️ **Important reminders:**
+1. Make sure the URDF file path does not contain Chinese characters
+2. The first run of Isaac Gym may take a long time to initialize
+3. If you run out of GPU memory, try reducing simulation complexity
+4. Some complex URDF models may require tuning physics parameters
 
-## 常见问题
+## FAQ
 
-### Q: 程序启动时报错"Failed to create PhysX simulation"
-A: 检查NVIDIA驱动和CUDA是否正确安装，确保GPU支持CUDA
+### Q: The program errors on startup: "Failed to create PhysX simulation"
+A: Check that the NVIDIA driver and CUDA are installed correctly, and make sure your GPU supports CUDA.
 
-### Q: 加载URDF后界面卡死
-A: 可能是URDF文件过于复杂，尝试简化模型或检查文件格式
+### Q: The UI freezes after loading a URDF
+A: The URDF file may be too complex—try simplifying the model or check the file format.
 
-### Q: 关节控制不响应
-A: 检查"Auto-update simulation"选项是否开启
+### Q: Joint control does not respond
+A: Check whether the "Auto-update simulation" option is enabled.
 
-## 文件结构
+## File Structure
 ```
 .
-├── isaac_urdf.py    # 主程序文件
-├── README.md          # 说明文档
-└── [URDF文件目录]     # 存放机器人URDF模型文件
+├── isaac_urdf.py    # Main program file
+├── README.md          # Documentation
+└── [URDF directory]     # Stores robot URDF model files
 ```
-
